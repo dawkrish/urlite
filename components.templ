@@ -1,0 +1,30 @@
+package main
+
+templ page() {
+	<html>
+		<head>
+			<title>Urlite</title>
+			<script src="https://unpkg.com/htmx.org@2.0.3"></script>
+		</head>
+		<body>
+			@form()
+			@urlResult("")
+		</body>
+	</html>
+}
+
+templ form() {
+	<form action="" hx-post="/" hx-target="#urlResult">
+		<label for="longURL">Long URL: </label>
+		<input type="url" name="longURL" id="longURL" placeholder="https://www.google.com"/>
+		<button>lighten</button>
+	</form>
+}
+
+templ urlResult(url string) {
+	<div id="urlResult">
+		if url != "" {
+			<p>Lighten URL: { url }</p>
+		}
+	</div>
+}
